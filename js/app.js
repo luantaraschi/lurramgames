@@ -7,14 +7,19 @@ function alterarStatus(id) {
   
     if (imagem.classList.contains('dashboard__item__img--rented')) { //verificando se a imagem está alugada
         if (confirm("Você deseja devolver o jogo?")) { // Adicionando um prompt de confirmação
-        imagem.classList.remove('dashboard__item__img--rented'); //retirando a classe
-        botao.classList.remove('dashboard__item__button--return');
-        botao.textContent  = 'Alugar'; //alterando o texto do botão
+            imagem.classList.remove('dashboard__item__img--rented'); //retirando a classe
+            botao.classList.remove('dashboard__item__button--return');
+            botao.textContent  = 'Alugar'; //alterando o texto do botão
         }
     } else  {
         imagem.classList.add('dashboard__item__img--rented');  //adicionando a classe
         botao.textContent  = 'Devolver'; //alterando o texto do botão
         botao.classList.add('dashboard__item__button--return');
     }
-
+    contarJogosAlugados(); //chama a funcao para contar jogos alugados
 }
+function contarJogosAlugados() {
+    let jogosAlugados = document.querySelectorAll('.dashboard__item__img--rented'); //verifica  quantos jogos estão alugados
+    console.log(`Jogos alugados: ${jogosAlugados.length}`); //printa no console a quantidade de jogos alugados
+}
+
